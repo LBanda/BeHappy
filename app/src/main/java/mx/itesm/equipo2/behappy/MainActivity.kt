@@ -31,7 +31,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         drawer = findViewById(R.id.drawer_layout)
-        toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        toggle = ActionBarDrawerToggle(
+            this,
+            drawer,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
         drawer.addDrawerListener(toggle)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -40,7 +46,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
     }
-    
+
     override fun onStart() {
         super.onStart()
 
@@ -60,7 +66,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_miPerfil -> Toast.makeText(this, "Mi Perfil", Toast.LENGTH_SHORT).show()
             R.id.nav_formulario -> Toast.makeText(this, "Formulario", Toast.LENGTH_SHORT).show()
             R.id.nav_contacto -> Toast.makeText(this, "Contacto", Toast.LENGTH_SHORT).show()
-            R.id.nav_configuracion -> Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show()
+            R.id.nav_configuracion -> Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT)
+                .show()
         }
 
         drawer.closeDrawer(GravityCompat.START)
@@ -78,8 +85,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)){
+        if (toggle.onOptionsItemSelected(item)) {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
 }
