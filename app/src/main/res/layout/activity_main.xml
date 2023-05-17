@@ -9,6 +9,7 @@
     tools:openDrawer="start"
     tools:context=".MainActivity">
 
+
     <include
         layout="@layout/app_barmenu_main"
         android:layout_height="match_parent"
@@ -24,12 +25,20 @@
         app:menu="@menu/activity_main_drawer"/>
 
     <TextView
+=======
+    <Button
+        android:id="@+id/btnCerrarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
+        android:text="Cerrar Sesion"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
 </androidx.drawerlayout.widget.DrawerLayout>
+=======
+</androidx.constraintlayout.widget.ConstraintLayout>
+

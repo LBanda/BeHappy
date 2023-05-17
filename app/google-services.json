@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "248161147598",
+    "project_id": "behappy-ebb7a",
+    "storage_bucket": "behappy-ebb7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248161147598:android:638f082c352b811d320e9f",
+        "android_client_info": {
+          "package_name": "mx.itesm.equipo2.behappy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "248161147598-g2u4joei8s766v817la6mis186k7jc5j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkGM_Eifykukq-ayWt2EYzyE8S0d5V_Dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "248161147598-g2u4joei8s766v817la6mis186k7jc5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

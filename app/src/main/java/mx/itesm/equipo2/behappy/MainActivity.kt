@@ -11,14 +11,21 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationView
+import android.content.Intent
+import androidx.core.content.ContentProviderCompat.requireContext
+import com.firebase.ui.auth.AuthUI
+import mx.itesm.equipo2.behappy.databinding.ActivityLoginBinding
+import mx.itesm.equipo2.behappy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var drawer: DrawerLayout
+    private lateinit var binding: ActivityMainBinding
     private lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
@@ -32,6 +39,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+    }
+    
+    override fun onStart() {
+        super.onStart()
+
+        binding.btnCerrarSesion.setOnClickListener {
+            AuthUI.getInstance().signOut(this).addOnCompleteListener {
+                finish()
+
+                val intLogin = Intent(this, LoginActivity::class.java)
+                startActivity(intLogin)
+            }
+        }
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -61,5 +82,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             return true
         }
         return super.onOptionsItemSelected(item)
-    }
 }
