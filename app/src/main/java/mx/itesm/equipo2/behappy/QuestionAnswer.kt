@@ -7,10 +7,10 @@ object QuestionAnswer {
     )
     var choices = arrayOf(
         arrayOf("Muy mal", "Maso", "Buen", "Feliz"),
-        arrayOf("Java", "Kotlin", "Notepad", "Python")
+        arrayOf("1", "2", "3", "4")
     )
     var correctAnswers = arrayOf(
         "Feliz",
-        "Notepad"
+        "4"
     )
 }
