@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navegacion"
+    app:startDestination="@id/principalFrag">
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="mx.itesm.equipo2.behappy.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/myForm"
+        android:name="mx.itesm.equipo2.behappy.MyForm"
+        android:label="activity_my_form"
+        tools:layout="@layout/activity_my_form" />
+    <activity
+        android:id="@+id/profile"
+        android:name="mx.itesm.equipo2.behappy.profile"
+        android:label="profile" />
+    <activity
+        android:id="@+id/contacto"
+        android:name="mx.itesm.equipo2.behappy.Contacto"
+        android:label="activity_contacto"
+        tools:layout="@layout/activity_contacto" />
+</navigation>
