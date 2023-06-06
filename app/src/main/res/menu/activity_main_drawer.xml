@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
-        <item android:id="@+id/nav_miPerfil"
+        <item
+            android:id="@+id/activity_profile2"
             android:title="Mi Perfil"
             android:icon="@drawable/abc_vector_test"/>
-        <item android:id="@+id/nav_formulario"
+
+        <item
+            android:id="@+id/activity_my_form"
             android:title="Formulario"
             android:icon="@drawable/abc_vector_test"/>
-        <item android:id="@+id/nav_contacto"
+
+        <item
+            android:id="@+id/activity_contacto"
             android:title="Contacto"
             android:icon="@drawable/abc_vector_test"/>
-        <item android:id="@+id/nav_configuracion"
+
+        <item
+            android:id="@+id/nav_configuracion"
             android:title="Configuración"
             android:icon="@drawable/abc_vector_test"/>
     </group>

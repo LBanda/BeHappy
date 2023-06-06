@@ -7,12 +7,14 @@
     tools:context=".MyForm">
 
     <TextView
+        android:id="@+id/total_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/total_question"
-        android:text="Total Questions "
         android:layout_centerHorizontal="true"
-        android:textSize="20dp"/>
+        android:text="Total Questions "
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 
     <TextView

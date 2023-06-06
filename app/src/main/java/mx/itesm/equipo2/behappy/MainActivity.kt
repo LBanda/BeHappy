@@ -63,9 +63,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_miPerfil -> Toast.makeText(this, "Mi Perfil", Toast.LENGTH_SHORT).show()
-            R.id.nav_formulario -> Toast.makeText(this, "Formulario", Toast.LENGTH_SHORT).show()
-            R.id.nav_contacto -> Toast.makeText(this, "Contacto", Toast.LENGTH_SHORT).show()
+            R.id.activity_profile2 -> Toast.makeText(this, "Mi Perfil", Toast.LENGTH_SHORT).show()
+            R.id.activity_my_form -> Toast.makeText(this, "Formulario", Toast.LENGTH_SHORT).show()
+            R.id.activity_contacto -> Toast.makeText(this, "Contacto", Toast.LENGTH_SHORT).show()
             R.id.nav_configuracion -> Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT)
                 .show()
         }
