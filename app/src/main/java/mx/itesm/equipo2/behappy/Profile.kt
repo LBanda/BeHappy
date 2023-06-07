@@ -95,6 +95,15 @@ class Profile : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
                 requestPermissions()
             }
         }
+
+        // Obtener la URI de la imagen guardada previamente
+        val selectedImageUriString = sharedPreferences.getString("selectedImageUri", null)
+        selectedImageUriString?.let {
+            val imageUri = Uri.parse(it)
+            selectedImageUri = imageUri
+            // Cargar la imagen en el ImageView
+            binding.imageView2.setImageURI(selectedImageUri)
+        }
     }
 
     private fun checkPermissions(): Boolean {
@@ -110,7 +119,11 @@ class Profile : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
         ActivityCompat.requestPermissions(this, permissions, permissionRequestCode)
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == permissionRequestCode && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             openGallery()
@@ -130,10 +143,15 @@ class Profile : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
                 selectedImageUri = it
                 // Aquí puedes hacer algo con la imagen seleccionada, como cargarla en un ImageView
                 binding.imageView2.setImageURI(selectedImageUri)
+
+                // Guardar la URI de la imagen seleccionada en SharedPreferences
+                val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putString("selectedImageUri", selectedImageUri.toString())
+                editor.apply()
             }
         }
     }
-
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
