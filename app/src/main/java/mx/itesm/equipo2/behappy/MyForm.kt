@@ -1,94 +1,106 @@
 package mx.itesm.equipo2.behappy
 
-import android.app.AlertDialog
-import android.content.DialogInterface
-import android.graphics.Color
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.ImageView
 
 class MyForm : AppCompatActivity(), View.OnClickListener {
-    var totalQuestionsTextView: TextView? = null
-    var questionTextView: TextView? = null
-    var ansA: Button? = null
-    var ansB: Button? = null
-    var ansC: Button? = null
-    var ansD: Button? = null
-    var submitBtn: Button? = null
-    var score = 0
-    var totalQuestion = QuestionAnswer.question.size
-    var currentQuestionIndex = 0
-    var selectedAnswer = ""
+    private lateinit var questionTextView: TextView
+    private lateinit var scoreTextView: TextView
+    private lateinit var option1Button: Button
+    private lateinit var option2Button: Button
+    private lateinit var option3Button: Button
+    private lateinit var option4Button: Button
+    private lateinit var imageView: ImageView
+
+    private var currentQuestionIndex = 0
+    private var score = 0
+
+    private val questions = arrayOf(
+        Question("Te molestaron cosas que usualmente no te molestan", arrayOf("Raremente o niguna vez", "Alguna o pocas veces", "Ocasionalmente o buena parte del tiempo", "La mayor parte o todo el tiempo"), 0),
+        Question("No te sentiste con ganas de comer", arrayOf("Raremente o niguna vez", "Alguna o pocas veces", "Ocasionalmente o buena parte del tiempo", "La mayor parte o todo el tiempo"), 0),
+        Question("Sentías que no podías quitarte de encima la tristeza aún con la ayuda de tu familia o amigos.", arrayOf("Raremente o niguna vez", "Alguna o pocas veces", "Ocasionalmente o buena parte del tiempo", "La mayor parte o todo el tiempo"), 0),
+        Question("Sentías que eras tan buena/bueno como cualquier otra persona", arrayOf("Raremente o niguna vez", "Alguna o pocas veces", "Ocasionalmente o buena parte del tiempo", "La mayor parte o todo el tiempo"), 0),
+        Question("Tenías dificultad en mantener tu mente en lo que estabas haciendo.", arrayOf("Raremente o niguna vez", "Alguna o pocas veces", "Ocasionalmente o buena parte del tiempo", "La mayor parte o todo el tiempo"), 0),
+        Question("Te sentías deprimida/deprimido", arrayOf("Raremente o niguna vez", "Alguna o pocas veces", "Ocasionalmente o buena parte del tiempo", "La mayor parte o todo el tiempo"), 0),
+        Question("Sentías que todo lo que hacías era un esfuerzo.", arrayOf("Raremente o niguna vez", "Alguna o pocas veces", "Ocasionalmente o buena parte del tiempo", "La mayor parte o todo el tiempo"), 0),
+        Question("Te sentías optimista sobre el futuro.", arrayOf("Raremente o niguna vez", "Alguna o pocas veces", "Ocasionalmente o buena parte del tiempo", "La mayor parte o todo el tiempo"), 0),
+        Question("Pensaste que tu vida había sido un fracaso.", arrayOf("Raremente o niguna vez", "Alguna o pocas veces", "Ocasionalmente o buena parte del tiempo", "La mayor parte o todo el tiempo"), 0),
+        Question("Te sentías con miedo.", arrayOf("Raremente o niguna vez", "Alguna o pocas veces", "Ocasionalmente o buena parte del tiempo", "La mayor parte o todo el tiempo"), 0)
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_form)
-        totalQuestionsTextView = findViewById(R.id.total_question)
-        questionTextView = findViewById(R.id.question)
-        ansA = findViewById(R.id.ans_A)
-        ansB = findViewById(R.id.ans_B)
-        ansC = findViewById(R.id.ans_C)
-        ansD = findViewById(R.id.ans_D)
-        submitBtn = findViewById(R.id.submit_btn)
-        ansA?.setOnClickListener(this)
-        ansB?.setOnClickListener(this)
-        ansC?.setOnClickListener(this)
-        ansD?.setOnClickListener(this)
-        submitBtn?.setOnClickListener(this)
-        totalQuestionsTextView?.setText("Total questions : $totalQuestion")
-        loadNewQuestion()
+        setContentView(R.layout.activity_main)
+
+        questionTextView = findViewById(R.id.questionTextView)
+        //scoreTextView = findViewById(R.id.scoreTextView)
+        option1Button = findViewById(R.id.option1Button)
+        option2Button = findViewById(R.id.option2Button)
+        option3Button = findViewById(R.id.option3Button)
+        option4Button = findViewById(R.id.option4Button)
+        imageView = findViewById(R.id.imageView)
+
+        option1Button.setOnClickListener{ onClick(option1Button) }
+        option2Button.setOnClickListener{ onClick(option1Button) }
+        option3Button.setOnClickListener{ onClick(option1Button) }
+        option4Button.setOnClickListener{ onClick(option1Button) }
+
+        updateQuestion()
     }
 
     override fun onClick(view: View) {
-        ansA!!.setBackgroundColor(Color.WHITE)
-        ansB!!.setBackgroundColor(Color.WHITE)
-        ansC!!.setBackgroundColor(Color.WHITE)
-        ansD!!.setBackgroundColor(Color.WHITE)
-        val clickedButton = view as Button
-        if (clickedButton.id == R.id.submit_btn) {
-            if (selectedAnswer == QuestionAnswer.correctAnswers[currentQuestionIndex]) {
-                score++
-            }
-            currentQuestionIndex++
-            loadNewQuestion()
+        val selectedOption = when (view.id) {
+            R.id.option1Button -> 0
+            R.id.option2Button -> 1
+            R.id.option3Button -> 2
+            R.id.option4Button -> 3
+            else -> -1
+        }
+
+        if (selectedOption == questions[currentQuestionIndex].correctOptionIndex) {
+            score++
+        }
+
+        currentQuestionIndex++
+        if (currentQuestionIndex < questions.size) {
+            updateQuestion()
         } else {
-            //choices button clicked
-            selectedAnswer = clickedButton.text.toString()
-            clickedButton.setBackgroundColor(Color.MAGENTA)
+            showFinalScore()
         }
     }
 
-    fun loadNewQuestion() {
-        if (currentQuestionIndex == totalQuestion) {
-            finishQuiz()
-            return
+    private fun updateQuestion() {
+        val currentQuestion = questions[currentQuestionIndex]
+        questionTextView.text = currentQuestion.question
+        //scoreTextView.text = "Score: $score"
+
+        option1Button.text = currentQuestion.options[0]
+        option2Button.text = currentQuestion.options[1]
+        option3Button.text = currentQuestion.options[2]
+        option4Button.text = currentQuestion.options[3]
+
+        when (score) {
+           /* 0 -> imageView.setImageResource(R.drawable.image0)
+            1 -> imageView.setImageResource(R.drawable.image1)
+            2 -> imageView.setImageResource(R.drawable.image2)
+            3 -> imageView.setImageResource(R.drawable.image3)
+            else -> imageView.setImageResource(R.drawable.default_image)*/
         }
-        questionTextView!!.text = QuestionAnswer.question[currentQuestionIndex]
-        ansA!!.text = QuestionAnswer.choices[currentQuestionIndex][0]
-        ansB!!.text = QuestionAnswer.choices[currentQuestionIndex][1]
-        ansC!!.text = QuestionAnswer.choices[currentQuestionIndex][2]
-        ansD!!.text = QuestionAnswer.choices[currentQuestionIndex][3]
     }
 
-    fun finishQuiz() {
-        var passStatus = ""
-        passStatus = if (score > totalQuestion * 0.60) {
-            "Passed"
-        } else {
-            "Failed"
-        }
-        AlertDialog.Builder(this)
-            .setTitle(passStatus)
-            .setMessage("Score is $score out of $totalQuestion")
-            .setPositiveButton("Restart") { dialogInterface: DialogInterface?, i: Int -> restartQuiz() }
-            .setCancelable(false)
-            .show()
+    private fun showFinalScore() {
+        questionTextView.text = "Quiz completed!"
+        //scoreTextView.text = "Final Score: $score"
+
+        option1Button.visibility = View.GONE
+        option2Button.visibility = View.GONE
+        option3Button.visibility = View.GONE
+        option4Button.visibility = View.GONE
     }
 
-    fun restartQuiz() {
-        score = 0
-        currentQuestionIndex = 0
-        loadNewQuestion()
-    }
+    data class Question(val question: String, val options: Array<String>, val correctOptionIndex: Int)
 }
