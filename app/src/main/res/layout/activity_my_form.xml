@@ -49,4 +49,19 @@
         android:layout_height="wrap_content"
         android:text="4" />
 
+    <TextView
+        android:id="@+id/finalVeredict"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginBottom="16dp"
+        android:text="\n \n asdasfdafdfasdasdas4" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="371dp"
+        android:layout_height="236dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/start_emoji" />
+
 </LinearLayout>

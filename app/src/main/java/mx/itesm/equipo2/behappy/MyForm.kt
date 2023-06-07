@@ -2,14 +2,18 @@ package mx.itesm.equipo2.behappy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.ImageView
+import android.widget.Toast
+
 
 class MyForm : AppCompatActivity(), View.OnClickListener {
     private lateinit var questionTextView: TextView
     private lateinit var scoreTextView: TextView
+    private lateinit var veredictTextView: TextView
     private lateinit var option1Button: Button
     private lateinit var option2Button: Button
     private lateinit var option3Button: Button
@@ -37,17 +41,20 @@ class MyForm : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_my_form)
 
         questionTextView = findViewById(R.id.questionTextView)
-        //scoreTextView = findViewById(R.id.scoreTextView)
+        scoreTextView = findViewById(R.id.scoreTextView)
+        veredictTextView = findViewById(R.id.finalVeredict)
         option1Button = findViewById(R.id.option1Button)
         option2Button = findViewById(R.id.option2Button)
         option3Button = findViewById(R.id.option3Button)
         option4Button = findViewById(R.id.option4Button)
+        imageView = findViewById(R.id.imageView)
 
         option1Button.setOnClickListener{ onClick(option1Button) }
-        option2Button.setOnClickListener{ onClick(option1Button) }
-        option3Button.setOnClickListener{ onClick(option1Button) }
-        option4Button.setOnClickListener{ onClick(option1Button) }
+        option2Button.setOnClickListener{ onClick(option2Button) }
+        option3Button.setOnClickListener{ onClick(option3Button) }
+        option4Button.setOnClickListener{ onClick(option4Button) }
 
+        veredictTextView.visibility = View.GONE
         updateQuestion()
     }
 
@@ -63,6 +70,7 @@ class MyForm : AppCompatActivity(), View.OnClickListener {
         if (selectedOption == questions[currentQuestionIndex].correctOptionIndex) {
             score++
         }
+        score += selectedOption+1
 
         currentQuestionIndex++
         if (currentQuestionIndex < questions.size) {
@@ -70,12 +78,20 @@ class MyForm : AppCompatActivity(), View.OnClickListener {
         } else {
             showFinalScore()
         }
+
+        if(score <= 15){
+            imageView.setImageResource(R.drawable.happy_emoji)
+        }else if(score in 15..30){
+            imageView.setImageResource(R.drawable.start_emoji)
+        }else if(score > 30){
+            imageView.setImageResource(R.drawable.sad_emoji)
+        }
     }
 
     private fun updateQuestion() {
         val currentQuestion = questions[currentQuestionIndex]
         questionTextView.text = currentQuestion.question
-        //scoreTextView.text = "Score: $score"
+        scoreTextView.text = "Score: $score"
 
         option1Button.text = currentQuestion.options[0]
         option2Button.text = currentQuestion.options[1]
@@ -84,13 +100,31 @@ class MyForm : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun showFinalScore() {
-        questionTextView.text = "Quiz completed!"
-        //scoreTextView.text = "Final Score: $score"
+        questionTextView.text = "Test Completado"
+        scoreTextView.text = "Final Score: $score"
 
         option1Button.visibility = View.GONE
         option2Button.visibility = View.GONE
         option3Button.visibility = View.GONE
         option4Button.visibility = View.GONE
+
+        if(score <= 10){
+            veredictTextView.text = "Muy bien! Mantienes una buena estabilidad emocional! De acuerdo con tus respuestas, es probable que no tengas un problema de depresión"
+        }else if(score in 11..20){
+            veredictTextView.text = "Incluso si actualmente no experimenta problemas de depresión, " +
+                    "es importante que controle su salud mental de vez en cuando. El bienestar mental es un espectro, y al igual que la salud física, requiere atención y cuidado regulares. Controlar nuestras emociones, buscar apoyo y participar en la autorreflexión puede ayudarnos a mantener una mentalidad sana y equilibrada."
+        }else if(score in 21..30){
+            veredictTextView.text = "Es importante reconocer que incluso la depresión " +
+                    "leve puede tener un impacto en el bienestar general de una persona. Reconocer y abordar estos sentimientos " +
+                    "es crucial para mantener una buena salud mental. Tomarse el tiempo para buscar ayuda profesional, confiar " +
+                    "en amigos o familiares de confianza y explorar estrategias de afrontamiento puede marcar una diferencia " +
+                    "significativa."
+        }else if(score >= 30){
+            veredictTextView.text = "Parece que estás experimentando síntomas de depresión, es fundamental que busques ayuda " +
+                    "lo antes posible. La depresión es una afección de salud mental grave que puede afectar significativamente " +
+                    "su bienestar y calidad de vida."
+        }
+        veredictTextView.visibility = View.VISIBLE
     }
 
     data class Question(val question: String, val options: Array<String>, val correctOptionIndex: Int)
