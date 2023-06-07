@@ -1,88 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".MyForm">
 
     <TextView
-        android:id="@+id/total_question"
-        android:layout_width="wrap_content"
+        android:id="@+id/questionTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Total Questions "
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
 
     <TextView
+        android:id="@+id/scoreTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/question"
-        android:textStyle="bold"
-        android:text="This will be the question"
-        android:textColor="@color/white"
-        android:textSize="24dp"
-        android:textAlignment="center"
-        android:layout_margin="20dp"
-        android:layout_above="@id/choices_layout"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/choices_layout"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ans_A"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
-            android:text="Ans A"
-            android:textColor="@color/black"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ans_B"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
-            android:text="Ans B"
-            android:textColor="@color/black"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ans_C"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
-            android:text="Ans C"
-            android:textColor="@color/black"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ans_D"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
-            android:text="Ans D"
-            android:textColor="@color/black"/>
-
-    </LinearLayout>
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp" />
 
     <Button
+        android:id="@+id/option1Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/submit_btn"
-        android:text="Submit"
-        android:layout_below="@id/choices_layout"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginBottom="8dp"
+        android:text="@string/option1_text"
+        android:contentDescription="@null" />
 
+    <Button
+        android:id="@+id/option2Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/option2_text"
+        android:contentDescription="@null" />
 
+    <Button
+        android:id="@+id/option3Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/option3_text"
+        android:contentDescription="@null" />
 
+    <Button
+        android:id="@+id/option4Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/option4_text"
+        android:contentDescription="@null" />
 
-</RelativeLayout>
+    <!--<ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/your_image" />-->
+
+</LinearLayout>

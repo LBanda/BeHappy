@@ -2,4 +2,8 @@
     <string name="app_name">BeHappy</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="option1_text">Option 1</string>
+    <string name="option2_text">Option 2</string>
+    <string name="option3_text">Option 3</string>
+    <string name="option4_text">Option 4</string>
 </resources>
