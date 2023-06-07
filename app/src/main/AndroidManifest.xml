@@ -15,7 +15,7 @@
             android:name=".Contacto"
             android:exported="false" />
         <activity
-            android:name=".profile"
+            android:name=".Profile"
             android:exported="false" />
         <activity
             android:name=".MyForm"

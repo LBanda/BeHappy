@@ -4,17 +4,12 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationView
 import android.content.Intent
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.firebase.ui.auth.AuthUI
-import mx.itesm.equipo2.behappy.databinding.ActivityLoginBinding
 import mx.itesm.equipo2.behappy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -47,6 +42,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.setNavigationItemSelectedListener(this)
     }
 
+    //Esto es lo de cerrar sesion
     override fun onStart() {
         super.onStart()
 
@@ -61,13 +57,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
+    //Esto es lo del menu lateral
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.activity_profile2 -> Toast.makeText(this, "Mi Perfil", Toast.LENGTH_SHORT).show()
-            R.id.activity_my_form -> Toast.makeText(this, "Formulario", Toast.LENGTH_SHORT).show()
-            R.id.activity_contacto -> Toast.makeText(this, "Contacto", Toast.LENGTH_SHORT).show()
-            R.id.nav_configuracion -> Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT)
-                .show()
+            R.id.activity_profile2 -> {val intPerfil = Intent(this, Profile::class.java)
+            startActivity(intPerfil)}
+            R.id.activity_my_form -> {val intForm = Intent(this, MyForm::class.java)
+                startActivity(intForm)}
+            R.id.activity_contacto -> {val intContacto = Intent(this, Contacto::class.java)
+                startActivity(intContacto)}
         }
 
         drawer.closeDrawer(GravityCompat.START)

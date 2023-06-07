@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navegacion"
-    app:startDestination="@id/principalFrag">
+    app:startDestination="@id/mainActivity">
     <activity
         android:id="@+id/mainActivity"
         android:name="mx.itesm.equipo2.behappy.MainActivity"
@@ -16,7 +16,7 @@
         tools:layout="@layout/activity_my_form" />
     <activity
         android:id="@+id/profile"
-        android:name="mx.itesm.equipo2.behappy.profile"
+        android:name="mx.itesm.equipo2.behappy.Profile"
         android:label="profile" />
     <activity
         android:id="@+id/contacto"
