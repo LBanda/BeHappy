@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView
 import android.content.Intent
 import mx.itesm.equipo2.behappy.databinding.ActivityMyFormBinding
 import android.content.res.Configuration
+import android.net.Uri
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -168,7 +169,7 @@ class MyForm : AppCompatActivity(), View.OnClickListener, NavigationView.OnNavig
             imageView.setImageResource(R.drawable.happy_emoji)
         }else if(score in 15..30){
             imageView.setImageResource(R.drawable.start_emoji)
-        }else if(score > 30){
+        }else if(score >= 30){
             imageView.setImageResource(R.drawable.sad_emoji)
         }
     }

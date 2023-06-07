@@ -93,6 +93,7 @@
                 android:textColor="#CF0404"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:visibility="invisible"
                 app:iconTint="#090101"
                 app:rippleColor="#FFFFFF" />
 
