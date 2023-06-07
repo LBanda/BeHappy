@@ -9,17 +9,16 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import mx.itesm.equipo2.behappy.databinding.ActivityProfile2Binding
+import mx.itesm.equipo2.behappy.databinding.ActivityAboutBinding
 import com.firebase.ui.auth.AuthUI
 
-class Profile : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-    lateinit var binding: ActivityProfile2Binding
+class About : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    lateinit var binding: ActivityAboutBinding
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProfile2Binding.inflate(layoutInflater)
+        binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
