@@ -27,37 +27,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/option1_text"
-        android:contentDescription="@null" />
+        android:text="1" />
 
     <Button
         android:id="@+id/option2Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/option2_text"
-        android:contentDescription="@null" />
+        android:text="2" />
 
     <Button
         android:id="@+id/option3Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/option3_text"
-        android:contentDescription="@null" />
+        android:text="3" />
 
     <Button
         android:id="@+id/option4Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/option4_text"
-        android:contentDescription="@null" />
-
-    <!--<ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@drawable/your_image" />-->
+        android:text="4" />
 
 </LinearLayout>
