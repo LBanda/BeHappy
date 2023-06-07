@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import mx.itesm.equipo2.behappy.databinding.ActivityContactoBinding
 import android.content.res.Configuration
 import android.view.MenuItem
@@ -14,9 +13,15 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.firebase.ui.auth.AuthUI
 
+import android.widget.EditText
+
 
 
 class Contacto : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private lateinit var etDireccion: EditText
+    private lateinit var etTema: EditText
+    private lateinit var etContenido: EditText
 
     lateinit var binding: ActivityContactoBinding
     private lateinit var drawer: DrawerLayout
@@ -26,6 +31,10 @@ class Contacto : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         super.onCreate(savedInstanceState)
         binding = ActivityContactoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        etDireccion = findViewById(R.id.correo)
+        etTema = findViewById(R.id.subject)
+        etContenido = findViewById(R.id.txtTexto)
 
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
@@ -48,15 +57,17 @@ class Contacto : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
 
 
 
-        binding.btnSend.setOnClickListener {
+        /*binding.btnSend.setOnClickListener {
 
-            val email = "A01610329@tec.mx"
+            val email = binding.correo.text.toString()
             val message = binding.txtTexto.text.toString()
             val subject = binding.subject.text.toString()
 
+            val addresses = email.split(",".toRegex()).toTypedArray()
+
             val intent = Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:")
-                putExtra(Intent.EXTRA_EMAIL,email)
+                putExtra(Intent.EXTRA_EMAIL,addresses)
                 putExtra(Intent.EXTRA_SUBJECT,subject)
                 putExtra(Intent.EXTRA_TEXT,message)
             }
@@ -67,8 +78,22 @@ class Contacto : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
             else{
                 Toast.makeText(this@Contacto, "Aplicacion requerida para enviar el correo no instalada", Toast.LENGTH_SHORT).show()
             }
+        }*/
+
+        binding.btnSend.setOnClickListener {
+            send()
         }
     }
+
+    fun send() {
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.data = Uri.parse("mailto:")
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(etDireccion.text.toString()))
+        intent.putExtra(Intent.EXTRA_SUBJECT, etTema.text.toString())
+        intent.putExtra(Intent.EXTRA_TEXT, etContenido.text.toString())
+        startActivity(intent)
+    }
+
 
     override fun onStart() {
         super.onStart()
