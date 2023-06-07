@@ -16,26 +16,39 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="118dp"
-            android:layout_height="117dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginTop="128dp"
+            android:adjustViewBounds="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logins" />
 
-        <TextView
+        <EditText
             android:id="@+id/txtNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="280dp"
-            android:text="Tu Nombre"
+            android:layout_marginTop="24dp"
+            android:hint="¿Cómo te gusta qué te llamen?"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btnSeleccionarFoto" />
+
+        <Button
+            android:id="@+id/btnSeleccionarFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Subir foto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <include
         layout="@layout/app_barmenu_main"
@@ -44,12 +57,13 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_height="match_parent"
         android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="start"
 
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer">
+        app:menu="@menu/activity_main_drawer"
+        tools:visibility="gone">
 
         <Button
             android:id="@+id/btnCerrarSesion"
