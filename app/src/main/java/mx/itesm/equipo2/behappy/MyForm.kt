@@ -34,7 +34,7 @@ class MyForm : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_my_form)
 
         questionTextView = findViewById(R.id.questionTextView)
         //scoreTextView = findViewById(R.id.scoreTextView)
@@ -42,7 +42,6 @@ class MyForm : AppCompatActivity(), View.OnClickListener {
         option2Button = findViewById(R.id.option2Button)
         option3Button = findViewById(R.id.option3Button)
         option4Button = findViewById(R.id.option4Button)
-        imageView = findViewById(R.id.imageView)
 
         option1Button.setOnClickListener{ onClick(option1Button) }
         option2Button.setOnClickListener{ onClick(option1Button) }
@@ -82,14 +81,6 @@ class MyForm : AppCompatActivity(), View.OnClickListener {
         option2Button.text = currentQuestion.options[1]
         option3Button.text = currentQuestion.options[2]
         option4Button.text = currentQuestion.options[3]
-
-        when (score) {
-           /* 0 -> imageView.setImageResource(R.drawable.image0)
-            1 -> imageView.setImageResource(R.drawable.image1)
-            2 -> imageView.setImageResource(R.drawable.image2)
-            3 -> imageView.setImageResource(R.drawable.image3)
-            else -> imageView.setImageResource(R.drawable.default_image)*/
-        }
     }
 
     private fun showFinalScore() {
