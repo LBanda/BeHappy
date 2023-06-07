@@ -60,6 +60,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     //Esto es lo del menu lateral
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.activity_inicio -> {val intInicio= Intent(this, MainActivity::class.java)
+                startActivity(intInicio)}
             R.id.activity_profile2 -> {val intPerfil = Intent(this, Profile::class.java)
             startActivity(intPerfil)}
             R.id.activity_my_form -> {val intForm = Intent(this, MyForm::class.java)

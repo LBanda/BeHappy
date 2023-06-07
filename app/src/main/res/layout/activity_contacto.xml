@@ -84,6 +84,13 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer">
 
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Cerrar Sesion" />
+
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
