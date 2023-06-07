@@ -12,6 +12,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.firebase.ui.auth.AuthUI
+
 
 
 class Contacto : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -44,6 +46,8 @@ class Contacto : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
+
+
         binding.btnSend.setOnClickListener {
 
             val email = "A01610329@tec.mx"
@@ -66,9 +70,25 @@ class Contacto : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        binding.btnCerrarSesion.setOnClickListener {
+            AuthUI.getInstance().signOut(this).addOnCompleteListener {
+                finish()
+
+                val intLogin = Intent(this, LoginActivity::class.java)
+                startActivity(intLogin)
+            }
+        }
+
+    }
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.activity_inicio -> {val intInicio= Intent(this, MainActivity::class.java)
+                startActivity(intInicio)}
             R.id.activity_profile2 -> {val intPerfil = Intent(this, Profile::class.java)
                 startActivity(intPerfil)}
             R.id.activity_my_form -> {val intForm = Intent(this, MyForm::class.java)
