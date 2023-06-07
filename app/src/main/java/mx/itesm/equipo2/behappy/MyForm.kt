@@ -92,6 +92,18 @@ class MyForm : AppCompatActivity(), View.OnClickListener, NavigationView.OnNavig
 
         veredictTextView.visibility = View.GONE
         updateQuestion()
+
+        val btnSOS = findViewById<View>(R.id.btnSOS)
+        btnSOS.setOnClickListener {
+            dialEmergencyNumber()
+        }
+    }
+
+    private fun dialEmergencyNumber() {
+        val emergencyPhoneNumber = "8001234567"
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:$emergencyPhoneNumber")
+        startActivity(intent)
     }
 
     override fun onStart() {

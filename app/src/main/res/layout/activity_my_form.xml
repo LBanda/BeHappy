@@ -81,7 +81,7 @@
                 android:src="@drawable/start_emoji" />
 
             <Button
-                android:id="@+id/btnSOS2"
+                android:id="@+id/btnSOS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -93,7 +93,7 @@
                 android:textColor="#CF0404"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:iconTint="#090101"
                 app:rippleColor="#FFFFFF" />
 
