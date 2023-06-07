@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult){
-        if(result.resultCode == RESULT_CANCELED){
+        if(result.resultCode == RESULT_OK){
             val usuario = FirebaseAuth.getInstance().currentUser
             cambiarAMenu(usuario)
         }

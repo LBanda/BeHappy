@@ -120,6 +120,8 @@ class Contacto : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
                 startActivity(intForm)}
             R.id.activity_contacto -> {val intContacto = Intent(this, Contacto::class.java)
                 startActivity(intContacto)}
+            R.id.activity_about -> {val intAbout= Intent(this, About::class.java)
+                startActivity(intAbout)}
         }
 
         drawer.closeDrawer(GravityCompat.START)

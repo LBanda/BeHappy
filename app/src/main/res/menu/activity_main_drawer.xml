@@ -18,7 +18,11 @@
         <item
             android:id="@+id/activity_contacto"
             android:icon="@drawable/fui_ic_mail_white_24dp"
-            android:title="Contacto" />
+            android:title="Contacto profesional" />
+        <item
+            android:id="@+id/activity_about"
+            android:icon="@drawable/about"
+            android:title="Nosotros" />
 
     </group>
 </menu>
