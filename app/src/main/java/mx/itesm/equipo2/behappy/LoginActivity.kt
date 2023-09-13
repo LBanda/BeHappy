@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun cambiarAMenu(usuario: FirebaseUser?) {
-        println("Bienvenido ${usuario?.displayName}")
+        println("Bienvenid@ ${usuario?.displayName}")
         println("Correo: ${usuario?.email}")
         println("Token: ${usuario?.uid}")
         val intMenu = Intent(this, MainActivity::class.java)
